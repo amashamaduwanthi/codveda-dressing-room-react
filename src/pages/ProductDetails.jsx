@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../services/api';
 import Loader from '../components/Loader';
-
+import { useCart } from '../context/CartContext'; 
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
- 
+  const { addToCart } = useCart(); 
 
   useEffect(() => {
     getProductById(id).then(data => {
@@ -29,7 +29,7 @@ const ProductDetails = () => {
         <p className="text-xl font-semibold mt-4">${product.price}</p>
         <button
           className="mt-4 px-6 py-2 bg-black text-white rounded hover:bg-gray-800"
-        
+          onClick={() => addToCart(product)} 
         >
           Add to Cart
         </button>
