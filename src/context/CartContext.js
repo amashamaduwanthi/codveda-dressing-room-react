@@ -10,7 +10,7 @@ export const CartProvider = ({ children }) => {
     };
   
     const clearCart = () => {
-      setCart([]); // Clear all cart items
+      setCart([]); 
     };
   
     return (
